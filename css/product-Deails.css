@@ -1,0 +1,30 @@
+#showDetails {
+    margin-top: 20px;
+    display: flex;
+    gap: 5rem;
+}
+
+#showDetails button {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    color: #fff;
+    background-color: #E89F71;
+}
+
+#showDetails button:hover {
+    filter: brightness(90%);
+}
+
+.nameAndStatus {
+    display: flex;
+    align-items: center;
+    gap: 7rem;
+}
+
+.detailsProducts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}

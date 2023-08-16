@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+</head>
+
+<link rel="stylesheet" href="Css/Sign_up.css">
+
+<body>
+    <header>
+        <h1 id="logo">AniShop.</h1>
+    </header>
+
+    <div id="container">
+
+        <h1>Đăng kí</h1>
+
+        <form id="registrationForm" class="mainContent">
+
+            <div class="informationBox">
+                <label for="email">Điền email của bạn</label>
+                <input type="email" id="email" class="fillbox" placeholder="abc@gmail.com" required>
+            </div>
+
+            <div class="informationBox">
+                <label for="name">Điền tên đăng nhập</label>
+                <input type="text" id="name" class="fillbox" placeholder="NgVanA1234" required
+                    pattern="(?=.*[a-z]).{4,}" required>
+            </div>
+
+            <div class=" informationBox">
+                <label for="password">Điền mật khẩu của bạn</label>
+                <input type="password" id="password" class="fillbox"
+                    placeholder="Phải có 6 kí tự gồm chữ hoa, chữ thường và số" pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                    required>
+            </div>
+
+            <div class=" informationBox">
+                <label for="passwordcomfirm">Xác nhận mật khẩu</label>
+                <input type="password" id="passwordcomfirm" class="fillbox" placeholder="Nhập lại mật khẩu trước đó"
+                    pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}" oninput="checkpass()" required>
+
+            </div>
+
+            <div class="HaveAccount">
+                <p>Bạn đã có tài khoản?</p>
+                <a href="Sign_in.html">Đăng nhập ngay</a>
+            </div>
+            <p id="warning"></p>
+            <div>
+                <button id="signUpBTN" class="Button" type="submit">Sign Up</button>
+            </div>
+
+        </form>
+    </div>
+    <script src="Js/Sign_up.js"></script>
+</body>
+
+</html>

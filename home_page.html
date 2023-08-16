@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/home_page.css">
+</head>
+
+<body>
+    <header>
+        <nav class="header_item">
+            <h1 class="Logo" onclick="backHome()">AniShop.</h1>
+            <ul class="Support_modul">
+                <li onclick="detailCommit()"><i class="fa-regular fa-bell"></i>Thông báo</li>
+                <li><i class="fa-solid fa-headphones"></i>Hỗ trợ</li>
+            </ul>
+            <div class="Search_box">
+                <img src="image/Search.png" onclick="search()">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." id="search_product">
+            </div>
+            <div class="function">
+                <img src="image/Heart.png" id="Favourite">
+                <img src="image/Cart.png" id="Cart" onclick="window.location.href = 'detail.html'">
+                <div class="userBar">
+                    <p id="userName"> Uses </p>
+                    <img src="image/Avt.jpg" alt="avtuser" id="avt">
+                </div>
+                <i class="fa-solid fa-right-from-bracket" onclick="signOut()"></i>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="Decorative">
+            <img src="image/001/1528 1.png">
+            <img src="image/001/2563956 1.png">
+            <img src="image/001/Rectangle 48.png">
+            <div class="Shopnow">
+                <h1>Nội thất chất lượng cao dành riêng cho bạn</h1>
+                <p>Đồ nội thất của chúng tôi được làm từ những vật liệu chọn lọc với chất lượng tốt nhất, phù hợp với
+                    ngôi nhà mơ ước của bạn</p>
+                <button>Mua ngay</button>
+            </div>
+        </div>
+        <div class="Decorative_item">
+            <div class="Decorative_box">
+                <img src="image/002/trophy 1.png" alt="">
+                <div>
+                    <p>Chất lượng cao</p>
+                    <span>chế tạo từ vật liệu hàng đầu</span>
+                </div>
+            </div>
+            <div class="Decorative_box">
+                <img src="image/002/guarantee.png" alt="">
+                <div>
+                    <p>Chế độ bảo hành tốt</p>
+                    <span>Trên 2 năm</span>
+                </div>
+            </div>
+            <div class="Decorative_box">
+                <img src="image/002/shipping.png" alt="">
+                <div>
+                    <p>Miễn phí giao hàng</p>
+                    <span>Với đơn có giá trên 3 triệu</span>
+                </div>
+            </div>
+            <div class="Decorative_box">
+                <img src="image/002/customer-support.png" alt="">
+                <div>
+                    <p>Hỗ trợ tận tâm</p>
+                    <span>Hỗ trợ 24/7</span>
+                </div>
+            </div>
+        </div>
+        <h1 class="Text">Sản phẩm của chúng tôi</h1>
+        <div id="Products">
+        </div>
+        <h1 class="Text">Sang trọng - Cá tính - Bền bỉ</h1>
+        <div class="slider">
+            <img id="main-image" src="" alt="main">
+            <i id="left" class="fa-solid fa-circle-arrow-left" onclick="changePrevImage()"></i>
+            <i id="right" class="fa-solid fa-circle-arrow-right" onclick="changeNextImage()"></i>
+        </div>
+        <h1 class="Text">Làm cho căn hộ của bạn trở nên tuyệt vời</h1>
+        <img src="image/003/image.png" alt="img">
+    </main>
+    <hr>
+    <footer>
+        <div>
+            <p><b>Liên hệ</b></p>
+            <p>sdt:0123498679</p>
+            <p>gmail: abcd@gmail.com</p>
+        </div>
+        <div>
+            <p><b>Mạng xã hội</b></p>
+            <p><i class="fa-brands fa-facebook icon iconbottom"></i> Facebook</p>
+            <p><i class="fa-brands fa-instagram icon iconbottom"></i> Instagram</p>
+            <p><i class="fa-brands fa-telegram icon iconbottom"></i> Telegram</p>
+            <p><i class="fa-brands fa-twitter icon iconbottom"></i> Twitter</p>
+        </div>
+        <div>
+            <p><b>Chính sách</b></p>
+        </div>
+        <div>
+            <p><b>Credits</b></p>
+            <p>Được tham khảo từ <strong>figma.com</strong></p>
+            <p>Dựng lại và chỉnh sửa bởi: <strong>@TuanAnhL</strong></p>
+        </div>
+    </footer>
+
+    <script src="js/home_page.js"></script>
+</body>
+
+</html>

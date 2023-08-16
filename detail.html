@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/detail.css">
+</head>
+
+<body>
+    <header>
+        <nav class="header_item">
+            <h1 class="Logo" onclick="backHome()">AniShop.</h1>
+            <ul class="Support_modul">
+                <li onclick="detailCommit()"><i class="fa-regular fa-bell"></i>Thông báo</li>
+                <li><i class="fa-solid fa-headphones"></i>Hỗ trợ</li>
+            </ul>
+            <div class="Search_box">
+                <img src="image/Search.png" onclick="search()">
+                <input type="text" placeholder="Tìm kiếm sản phẩm..." id="search_product">
+            </div>
+            <div class="function">
+                <img src="image/Heart.png" id="Favourite">
+                <img src="image/Cart.png" id="Cart" onclick="window.location.href = 'detail.html'">
+                <div class="userBar">
+                    <p id="userName"> Uses </p>
+                    <img src="image/Avt.jpg" alt="avtuser" id="avt">
+                </div>
+                <i class="fa-solid fa-right-from-bracket" onclick="signOut()"></i>
+            </div>
+        </nav>
+    </header>
+    <section class="checkout">
+        <div class="container">
+            <div class="cart-container">
+                <h2>Giỏ hàng</h2>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Id người mua</th>
+                            <th>Id sản phẩm</th>
+                            <th style="width: 120px;">Ảnh</th>
+                            <th style="width: 100px;">Tên sản phẩm</th>
+                            <th>mô tả</th>
+                            <th style="width: 100px;">Giá Sản phẩm</th>
+                            <th style="width: 150px;">Số lượng</th>
+                            <th style="width: 150px;">Tổng giá</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="cart-items" id="table_body">
+                        <!-- <tr>
+                            <td>1</td>
+                            <td>103412</td>
+                            <td>
+                                <img width="100px" src="image/Product_img/image 6.png" alt="img">
+                            </td>
+                            <td>Cốc</td>
+                            <td>cốc cà phê</td>
+                            <td>$100</td>
+                            <td>
+                                <button onclick="reduceQuantity('${product.sku}')"> - </button>
+                                <span>1</span>
+                                <button onclick="addQuantity('${product.sku}')"> + </button>
+                            </td>
+                            <td>$<span class="total_price">100</span>
+                            </td>
+                            <td>
+                                <button onclick="removeItem('${product.sku}')">Remove</button>
+                            </td>
+                        </tr> -->
+                    </tbody>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"></td>
+                            <td colspan="3">
+                                <strong>
+                                    Total: <span id="total_all">0</span> VNĐ
+                                </strong>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div id="confirm_order">
+                <textarea name="" id="note" placeholder="Note"></textarea>
+                <button id="btn_buy" onclick="buyItem()">Mua</button>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+    <footer>
+        <div>
+            <p><b>Liên hệ</b></p>
+            <p>sdt:0123498679</p>
+            <p>gmail: abcd@gmail.com</p>
+        </div>
+        <div>
+            <p><b>Mạng xã hội</b></p>
+            <p><i class="fa-brands fa-facebook icon iconbottom"></i> Facebook</p>
+            <p><i class="fa-brands fa-instagram icon iconbottom"></i> Instagram</p>
+            <p><i class="fa-brands fa-telegram icon iconbottom"></i> Telegram</p>
+            <p><i class="fa-brands fa-twitter icon iconbottom"></i> Twitter</p>
+        </div>
+        <div>
+            <p><b>Chính sách</b></p>
+        </div>
+        <div>
+            <p><b>Credits</b></p>
+            <p>Được tham khảo từ <strong>figma.com</strong></p>
+            <p>Dựng lại và chỉnh sửa bởi: <strong>@TuanAnhL</strong></p>
+        </div>
+    </footer>
+    <script src="./js/detail.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../image/background.jpg) no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(3px);
+}
+
+#logo {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.3rem;
+    text-shadow: 1px 1px white;
+}
+
+#container {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+    background-color: #FFF;
+    padding: 2rem 5.5rem 4.6rem 5.5rem;
+    margin: 3rem 0rem 8rem 0rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+.informationBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    font-size: 1.2rem;
+    display: flex;
+}
+
+.Button {
+    width: 27rem;
+    height: 3.5rem;
+    color: #FFF;
+    text-align: center;
+    font-size: 1rem;
+    border: none;
+    background-color: #4285F4;
+    border-radius: 10px;
+}
+
+.fillbox {
+    width: 27rem;
+    height: 3.5625rem;
+    border-radius: 0.2rem;
+    border: 1px solid #4285F4;
+    background: #FFF;
+    font-size: 1.2rem;
+}
+
+.fillbox:hover {
+    border: 1px solid rgb(0, 255, 0);
+}
+
+.Button:hover {
+    filter: brightness(90%);
+}
+
+input {
+    padding: 0rem 1rem;
+    outline: none;
+}
+
+#warning {
+    color: red;
+}

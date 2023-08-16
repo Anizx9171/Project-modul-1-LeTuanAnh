@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+</head>
+
+<link rel="stylesheet" href="Css/Sign_in.css">
+
+<body>
+    <header>
+        <h1 id="logo">AniShop.</h1>
+    </header>
+
+    <div id="container">
+
+        <h1>Đăng nhập</h1>
+
+        <form id="registrationForm" class="mainContent">
+
+            <div class="informationBox box">
+                <a href="google.com/sign" class="External">
+                    <img src="image/google.png" alt="">
+                    <span>Đăng nhập bằng google</span>
+                </a>
+            </div>
+            <div class="informationBox box">
+                <a href="facebook.com/sign" class="External">
+                    <img src="image/Facebook.png" alt="">
+                    <span>Đăng nhập bằng Facebook</span>
+                </a>
+            </div>
+
+            <div class="informationBox">
+                <label for="name">Điền tên đăng nhập</label>
+                <input type="text" id="name" class="fillbox" placeholder="Điền tên đăng nhập của bạn" required
+                    pattern="(?=.*[a-z]).{4,}" required>
+            </div>
+
+            <div class=" informationBox">
+                <label for="password">Điền mật khẩu của bạn</label>
+                <input type="password" id="password" class="fillbox" placeholder="Điền mật khẩu của bạn"
+                    pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+            </div>
+
+            <div>
+                <p>Bạn chưa hưa có tài khoản?</p>
+                <a href="Sign_up.html">Đăng kí ngay</a>
+            </div>
+            <p id="warning"></p>
+            <div>
+                <button id="signInBTN" class="Button" type="submit">Đăng nhập</button>
+            </div>
+
+        </form>
+    </div>
+    <script src="Js/Sign_in.js"></script>
+</body>
+
+</html>
