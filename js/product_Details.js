@@ -4,7 +4,6 @@ localStorage.setItem("cartItem", JSON.stringify([]))
 let productDetails = JSON.parse(localStorage.getItem("productDetails"))
 console.log(productDetails);
 localStorage.setItem("cartItem", JSON.stringify([]))
-localStorage.setItem("productDetails", JSON.stringify(""))
 function checkSign() {
     if (+idUser > 0) {
         return
