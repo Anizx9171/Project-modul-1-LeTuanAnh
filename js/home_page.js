@@ -101,6 +101,8 @@ function search() {
     const productSearch = product.filter(products => products.name.toLowerCase().includes(textSearch.trim().toLowerCase()))
     // vẽ lại mảng
     print(productSearch)
+    document.querySelector(".Decorative_item").style.display = "none"
+    document.querySelector(".Decorative").style.display = "none"
 }
 
 document.getElementById("search_product").addEventListener("keydown", (e) => {
