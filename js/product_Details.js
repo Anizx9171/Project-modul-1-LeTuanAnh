@@ -2,7 +2,6 @@ let idUser = JSON.parse(localStorage.getItem("idUses"))
 let dataUser = JSON.parse(localStorage.getItem("dataUser"))
 localStorage.setItem("cartItem", JSON.stringify([]))
 let productDetails = JSON.parse(localStorage.getItem("productDetails"))
-console.log(productDetails);
 localStorage.setItem("cartItem", JSON.stringify([]))
 function checkSign() {
     if (+idUser > 0) {
@@ -29,7 +28,6 @@ function signOut() {
 
 let product = JSON.parse(localStorage.getItem("listproducts"))
 let index = product.findIndex(e => e.id == productDetails)
-console.log(index);
 function paint() {
     document.getElementById("showDetails").innerHTML = ""
     document.getElementById("showDetails").innerHTML = `<div class="detailsProducts">

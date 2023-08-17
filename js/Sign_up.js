@@ -31,8 +31,6 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     data.push({ id: idAuto, name: nameUser, email: emailUser, password: passwordUser, Permission: "User", cart: [], checkComfirm: [] })
     localStorage.setItem("dataUser", JSON.stringify(data)) // đẩy lên
 
-    //log user để kiểm tra xem lấy được thông tin hay chưa
-    // console.log(user);
 
     // Thông báo đăng kí thành công và chuyển hướng người dùng về trang chủ
     alert("Đăng kí tài khoản thành công! Vui lòng đăng nhập để tiếp tục.")
