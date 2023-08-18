@@ -8,7 +8,6 @@ const inputPrice = document.getElementById("price")
 const inputCount = document.getElementById("count")
 const inputImg = document.getElementById("img")
 const description = document.getElementById("description")
-
 function checkSign() {
     if (+idUser > 0) {
         return
@@ -17,6 +16,12 @@ function checkSign() {
 }
 
 checkSign()
+
+let checkAdmin = dataUser.find(e => e.id == idUser)
+if (checkAdmin.Permission == "User") {
+    window.location.href = "home_page.html"
+}
+
 
 function drawTable(arr) {
     let stringHTML = ""

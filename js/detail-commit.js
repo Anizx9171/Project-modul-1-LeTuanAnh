@@ -36,7 +36,11 @@ function paint() {
         stri = ""
         for (const value of element.oder) {
 
-            stri += `<li>Mã sản phẩm: ${value.id}, Tên sản phẩm: ${value.name}, số lượng mua: ${value.quantity}</li>`
+            stri += `<li>Mã sản phẩm: <b>${value.id}</b>,
+             Tên sản phẩm: <b>${value.name}</b>, 
+             số lượng mua: <b>${value.quantity}</b>, 
+             giá 1 sản phẩm: <b>${value.price}đ</b>, 
+             tổng giá: <b>${+value.quantity * value.price}đ</b>,`
         }
         let status = ""
         if (element.acceptance == "a") {
@@ -47,13 +51,13 @@ function paint() {
             status = "Đã bị hủy"
         }
         return str += `<tr>
-                    <td>${element.idoder}</td>
+                    <td>#${element.idoder}</td>
                     <td colspan="2">
                         <ul>
                             ${stri}
                         </ul>
                     </td>
-                    <td>${status}</td>
+                    <td><b style="color: brown">${status}</b></td>
                     <td>
                         <button class="btn" onclick="deleteOder(${element.idoder})">Xóa</button>
                     </td>

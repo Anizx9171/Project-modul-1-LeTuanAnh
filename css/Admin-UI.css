@@ -171,7 +171,7 @@ footer {
     justify-content: center;
     gap: 14rem;
     padding: 1rem;
-    height: 22rem;
+    height: 28rem;
 }
 
 footer>div {
@@ -204,4 +204,8 @@ strong {
 #selection>input {
     margin: 0;
     width: auto;
+}
+
+th {
+    background-color: aliceblue;
 }

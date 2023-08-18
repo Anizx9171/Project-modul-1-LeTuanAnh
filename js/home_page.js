@@ -39,7 +39,7 @@ function print(arr) {
                         <p onclick="productDetails(${value.id})"><img src="image/icon_hover/gridicons_share.png">Chi tiết</p>
                     </div>
                 </div>
-                <img src="image/Product_img/${value.image}" alt="${value.name}">
+                <img src="image/Product_img/${value.image}" alt="${value.name}" height="300">
                 <div class="Products_label">
                     <h2>${value.name}</h2>
                     <span>${value.description}</span>

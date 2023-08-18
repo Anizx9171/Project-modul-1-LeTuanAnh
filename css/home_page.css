@@ -126,6 +126,7 @@ header {
 }
 
 .Decorative {
+    width: 100%;
     display: flex;
     gap: 1.5rem;
     justify-content: center;
@@ -133,7 +134,7 @@ header {
 }
 
 .Decorative>img {
-    width: 450px;
+    width: 32.1%;
 }
 
 .Shopnow {
@@ -225,6 +226,7 @@ main {
 }
 
 #Products {
+    width: 95%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
@@ -237,6 +239,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+}
+
+.Products_item>img {
+    width: 100%;
 }
 
 .Products_label span {
@@ -345,6 +351,7 @@ main {
 }
 
 main>img:last-child {
+    width: 100%;
     margin-bottom: 5.5rem;
     filter: brightness(90%);
 }

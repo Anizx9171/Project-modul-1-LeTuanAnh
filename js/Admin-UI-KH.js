@@ -1,14 +1,18 @@
 let idUser = JSON.parse(localStorage.getItem("idUses"))
 let dataUser = JSON.parse(localStorage.getItem("dataUser"))
-
 function checkSign() {
     if (+idUser > 0) {
         return
     }
     window.location.href = "Sign_in.html"
 }
-
 checkSign()
+
+let checkAdmin = dataUser.find(e => e.id == idUser)
+if (checkAdmin.Permission == "User") {
+    window.location.href = "home_page.html"
+}
+
 
 let indexUpdateGlobal = null
 
@@ -40,9 +44,13 @@ drawTable(dataUser)
 
 function toggleForm(id) {
     document.getElementById("form_scope").classList.toggle("hide")
-
     if (id != undefined) {
         const indexUpdate = dataUser.findIndex(e => e.id == id)
+        if (dataUser[indexUpdate].name == "Anizx9171") {
+            alert("Không được phép sửa admin này")
+            document.getElementById("form_scope").classList.toggle("hide")
+            return
+        }
         indexUpdateGlobal = indexUpdate
         inputName.value = dataUser[indexUpdate].name
         inputPrice.value = dataUser[indexUpdate].email
@@ -100,7 +108,10 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
 function deleteProduct(id) {
     const indexDelete = dataUser.findIndex(e => e.id == id)
-
+    if (dataUser[indexDelete].name == "Anizx9171") {
+        alert("Không được phép xóa admin này")
+        return
+    }
     const result = confirm(`Bạn có thật sự muốn xóa tài khoản ${dataUser[indexDelete].name} không?`)
     if (result) {
         dataUser.splice(indexDelete, 1)
