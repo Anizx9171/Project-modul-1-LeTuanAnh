@@ -1,31 +1,4 @@
-let idUser = JSON.parse(localStorage.getItem("idUses"))
-let dataUser = JSON.parse(localStorage.getItem("dataUser"))
-localStorage.setItem("cartItem", JSON.stringify([]))
 localStorage.setItem("productDetails", JSON.stringify([]))
-
-function checkSign() {
-    if (+idUser > 0) {
-        return
-    }
-    window.location.href = "Sign_in.html"
-}
-
-checkSign()
-
-let locationUser = dataUser.findIndex((element) => element.id == idUser)
-document.getElementById("userName").innerHTML = dataUser[locationUser].name
-
-function backHome() {
-    window.location.href = "home_page.html"
-}
-
-function signOut() {
-    let logOut = confirm("Bạn có chắc muốn đăng xuất không?")
-    if (logOut === true) {
-        window.location.href = "home_page_unSign.html"
-    }
-}
-
 let product = JSON.parse(localStorage.getItem("listproducts"))
 
 //function in sản phẩm
@@ -102,6 +75,7 @@ function search() {
     // vẽ lại mảng
     print(productSearch)
     document.location.href = "#product_alert"
+
 }
 
 document.getElementById("search_product").addEventListener("keydown", (e) => {
@@ -111,35 +85,11 @@ document.getElementById("search_product").addEventListener("keydown", (e) => {
 })
 
 function addToCart(id) {
-    let listproducts = JSON.parse(localStorage.getItem("listproducts"))
-    let ItemAddToCart = JSON.parse(localStorage.getItem("cartItem"))
-    let index = dataUser[locationUser].cart.findIndex((value) => value.id == id)
-    let indexProduct = listproducts.findIndex((value) => value.id == id)
-    if (listproducts[indexProduct].quantity == 0) {
-        listproducts[indexProduct].status = "Không bán"
-        localStorage.setItem("listproducts", JSON.stringify(listproducts))
-    }
-    if (listproducts[indexProduct].status == "Không bán") {
-        alert("Sản phẩm chưa được mở bán")
-        return
-    }
-    if (index == -1) {
-        listproducts[indexProduct].quantity = 1
-        ItemAddToCart.push(listproducts[indexProduct])
-        dataUser[locationUser].cart.push(listproducts[indexProduct])
-        localStorage.setItem("dataUser", JSON.stringify(dataUser))
-        localStorage.setItem("cartItem", JSON.stringify(ItemAddToCart))
-        alert("Đã thêm sản phẩm vào giỏ hàng")
-    } else {
-        alert("Sản phẩm đã tồn tại trong giỏ hàng")
-    }
+    alert("Vui lòng đăng nhập trước khi mua hàng!")
 }
 function detailCommit() {
-    window.location.href = "detail_commit.html"
+    alert("Bạn chưa đăng nhập!")
 }
 function productDetails(id) {
-    window.location.href = "product_Details.html"
-    let detalItem = JSON.parse(localStorage.getItem("productDetails"))
-    detalItem.push(id)
-    localStorage.setItem("productDetails", JSON.stringify(detalItem))
+    alert("Bạn cần đăng nhập trước!")
 }

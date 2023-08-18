@@ -23,12 +23,12 @@
             </div>
             <div class="function">
                 <img src="image/Heart.png" id="Favourite">
-                <img src="image/Cart.png" id="Cart" onclick="window.location.href = 'detail.html'">
-                <div class="userBar">
-                    <p id="userName"> Uses </p>
-                    <img src="image/Avt.jpg" alt="avtuser" id="avt">
+                <img src="image/Cart.png" id="Cart" onclick="alert('Bạn chưa đăng nhập!')">
+                <div class="signIn_signUp">
+                    <a href="Sign_in.html"><button>Đăng nhập</button></a>
+                    <a href="Sign_up.html"><button>Đăng kí</button></a>
                 </div>
-                <i class="fa-solid fa-right-from-bracket" onclick="signOut()"></i>
+                <i class="fa-solid fa-right-from-bracket" onclick="signOut()" style="display: none;"></i>
             </div>
         </nav>
     </header>
@@ -109,8 +109,7 @@
             <p>Dựng lại và chỉnh sửa bởi: <strong>@TuanAnhL</strong></p>
         </div>
     </footer>
-
-    <script src="js/home_page.js"></script>
 </body>
+<script src="js/home_page_unSign.js"></script>
 
 </html>
