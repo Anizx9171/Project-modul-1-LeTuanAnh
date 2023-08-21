@@ -1,7 +1,7 @@
 let order = JSON.parse(localStorage.getItem("order"))
 let idUser = JSON.parse(localStorage.getItem("idUses"))
 let dataUser = JSON.parse(localStorage.getItem("dataUser"))
-let products = JSON.parse(localStorage.getItem("listproducts"))
+let products = JSON.parse(localStorage.getItem("listproducts")) || []
 function checkSign() {
     if (+idUser > 0) {
         return

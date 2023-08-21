@@ -1,4 +1,4 @@
-let product = JSON.parse(localStorage.getItem("listproducts"))
+let product = JSON.parse(localStorage.getItem("listproducts")) || []
 let idUser = JSON.parse(localStorage.getItem("idUses"))
 let dataUser = JSON.parse(localStorage.getItem("dataUser"))
 let indexUpdateGlobal = null

@@ -1,6 +1,6 @@
 localStorage.setItem("productDetails", JSON.stringify([]))
 localStorage.setItem("idUses", JSON.stringify([]))
-let product = JSON.parse(localStorage.getItem("listproducts"))
+let product = JSON.parse(localStorage.getItem("listproducts")) || []
 
 //function in sản phẩm
 function print(arr) {

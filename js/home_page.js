@@ -9,8 +9,11 @@ function checkSign() {
     }
     window.location.href = "Sign_in.html"
 }
-
 checkSign()
+let checkAdmin = dataUser.find(e => e.id == idUser)
+if (checkAdmin.Permission.toLowerCase() == "admin") {
+    window.location.href = "admin_SP.html"
+}
 
 let locationUser = dataUser.findIndex((element) => element.id == idUser)
 document.getElementById("userName").innerHTML = dataUser[locationUser].name
@@ -27,7 +30,7 @@ function signOut() {
 
 }
 
-let product = JSON.parse(localStorage.getItem("listproducts"))
+let product = JSON.parse(localStorage.getItem("listproducts")) || []
 
 //function in sản phẩm
 function print(arr) {
