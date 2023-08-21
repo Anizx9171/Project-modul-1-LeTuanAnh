@@ -7,7 +7,7 @@ document.getElementById("registrationForm").addEventListener("submit", function 
 
     event.preventDefault(); // Chặn sự kiện mặc định của form
 
-    let dataGet = JSON.parse(localStorage.getItem("dataUser"))
+    let dataGet = JSON.parse(localStorage.getItem("dataUser")) || []
 
     // Lấy thông tin từ các ô input
     let nameUser = document.getElementById("name").value;

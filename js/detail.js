@@ -1,5 +1,5 @@
-let idUser = JSON.parse(localStorage.getItem("idUses"))
-let dataUser = JSON.parse(localStorage.getItem("dataUser"))
+let idUser = JSON.parse(localStorage.getItem("idUses")) || []
+let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
 let products = JSON.parse(localStorage.getItem("listproducts")) || []
 function checkSign() {
     if (+idUser > 0) {
@@ -27,11 +27,13 @@ function signOut() {
 function detailCommit() {
     window.location.href = "detail_commit.html"
 }
-
 // vẽ
 function print() {
+    let sum = 0;
     let str = ""
-    dataUser[locationUser].cart.forEach(element => str += `<tr>
+    dataUser[locationUser].cart.forEach(element => {
+        sum += Number(element.quantity) * Number(element.price)
+        return str += `<tr>
                             <td>${idUser}</td>
                             <td>${element.id}</td>
                             <td>
@@ -39,25 +41,24 @@ function print() {
                             </td>
                             <td>${element.name}</td>
                             <td>${element.description}</td>
-                            <td>${element.price}<b>VNĐ</b></td>
+                            <td><b>${(element.price * 1).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</b></td>
                             <td>
                                 <button onclick="countDown(${element.id})"> - </button>
                                 <span>${element.quantity}</span>
                                 <button onclick="countUp(${element.id})"> + </button>
                             </td>
-                            <td><span class="total_price">${Number(element.quantity) * Number(element.price)}</span><b>VNĐ</b>
+                            <td><span class="total_price"><b>${(Number(element.quantity) * Number(element.price)).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span></b>
                             </td>
                             <td>
                                 <button onclick="removeItem('${element.id}')">Remove</button>
                             </td>
-                        </tr>`);
+                        </tr>`});
     document.getElementById("table_body").innerHTML = ""
     document.getElementById("table_body").innerHTML = str
 
     let totalPrice = document.querySelectorAll(".total_price")
-    let sum = 0;
-    totalPrice.forEach(e => sum += Number(e.innerHTML))
-    document.getElementById("total_all").innerHTML = sum
+
+    document.getElementById("total_all").innerHTML = sum.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })
 
 }
 print()

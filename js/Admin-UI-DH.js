@@ -1,6 +1,6 @@
-let oder = JSON.parse(localStorage.getItem("order"))
-let idUser = JSON.parse(localStorage.getItem("idUses"))
-let dataUser = JSON.parse(localStorage.getItem("dataUser"))
+let oder = JSON.parse(localStorage.getItem("order")) || []
+let idUser = JSON.parse(localStorage.getItem("idUses")) || []
+let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
 function checkSign() {
     if (+idUser > 0) {
         return
@@ -27,8 +27,8 @@ function paint() {
             stri += `<li>Mã sản phẩm: <b>${value.id}</b>,
              Tên sản phẩm: <b>${value.name}</b>, 
              số lượng mua: <b>${value.quantity}</b>, 
-             giá 1 sản phẩm: <b>${value.price}đ</b>, 
-             tổng giá: <b>${+value.quantity * value.price}đ</b>,`
+             giá 1 sản phẩm: <b>${(value.price * 1).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</b>, 
+             tổng giá: <b>${(+value.quantity * value.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</b>,`
         }
         return str += `<tr>
                     <td>#${element.idoder}</td>

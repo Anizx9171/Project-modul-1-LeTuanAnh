@@ -1,5 +1,6 @@
 let idUser = JSON.parse(localStorage.getItem("idUses")) || []
 let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
+let category = JSON.parse(localStorage.getItem("category")) || []
 function checkSign() {
     if (+idUser > 0) {
         return
@@ -13,23 +14,18 @@ if (checkAdmin.Permission == "User") {
     window.location.href = "home_page.html"
 }
 
-
 let indexUpdateGlobal = null
 
 const inputName = document.getElementById("name")
 const inputPrice = document.getElementById("price")
-const inputCount = document.getElementById("count")
-const pass = document.getElementById("pass")
 
 function drawTable(arr) {
     let stringHTML = ""
     arr.forEach(e => stringHTML +=
         `
     <tr>
-        <td>${e.id}</td>
         <td>${e.name}</td>
-        <td>${e.email}</td>
-        <td>${e.Permission}</td>
+        <td colspan="2">${e.description}</td>
         <td>
             <div class="action_col">
                 <button class="btn btn_sua" onclick="toggleForm(${e.id})">Edit</button>
@@ -40,21 +36,15 @@ function drawTable(arr) {
     `)
     document.getElementById("table_body").innerHTML = stringHTML
 }
-drawTable(dataUser)
+drawTable(category)
 
 function toggleForm(id) {
     document.getElementById("form_scope").classList.toggle("hide")
     if (id != undefined) {
-        const indexUpdate = dataUser.findIndex(e => e.id == id)
-        if (dataUser[indexUpdate].name == "Anizx9171") {
-            alert("Không được phép sửa admin này")
-            document.getElementById("form_scope").classList.toggle("hide")
-            return
-        }
+        const indexUpdate = category.findIndex(e => e.id == id)
+        inputName.value = category[indexUpdate].name
+        inputPrice.value = category[indexUpdate].description
         indexUpdateGlobal = indexUpdate
-        inputName.value = dataUser[indexUpdate].name
-        inputPrice.value = dataUser[indexUpdate].email
-        pass.value = dataUser[indexUpdate].password
     } else {
         indexUpdateGlobal = null
         document.getElementById("form").reset()
@@ -63,59 +53,38 @@ function toggleForm(id) {
 
 document.getElementById("form").addEventListener("submit", function (e) {
     e.preventDefault()
-    let permission
-    let radio = document.getElementsByName("Permission");
-    for (let i = 0; i < radio.length; i++) {
-        if (radio[i].checked === true) {
-            permission = radio[i].value;
-        }
-    }
 
     if (indexUpdateGlobal != null) {
-        dataUser[indexUpdateGlobal].name = inputName.value
-        dataUser[indexUpdateGlobal].email = inputPrice.value
-        dataUser[indexUpdateGlobal].Permission = permission
-        localStorage.setItem("dataUser", JSON.stringify(dataUser))
+        category[indexUpdateGlobal].name = inputName.value
+        category[indexUpdateGlobal].description = inputPrice.value
         indexUpdateGlobal = null
-
+        localStorage.setItem("category", JSON.stringify(category))
         this.reset()
         toggleForm()
-        drawTable(dataUser)
+        drawTable(category)
         return
     }
-
-
-    let idGlobal = 1 + Math.round(Math.random() * 1000000)
-
-    const newUser = {
-        id: idGlobal,
+    let idR = 1000000 + Math.round(Math.random() * 9888888)
+    const newCategory = {
+        id: idR,
         name: inputName.value,
-        email: inputPrice.value,
-        password: pass.value,
-        Permission: permission,
-        cart: [],
-        checkComfirm: []
+        description: inputPrice.value
     }
 
-    dataUser.push(newUser)
-    localStorage.setItem("dataUser", JSON.stringify(dataUser))
-
+    category.push(newCategory)
+    localStorage.setItem("category", JSON.stringify(category))
     this.reset()
     toggleForm()
-    drawTable(dataUser)
+    drawTable(category)
 })
 
 
 function deleteProduct(id) {
-    const indexDelete = dataUser.findIndex(e => e.id == id)
-    if (dataUser[indexDelete].name == "Anizx9171") {
-        alert("Không được phép xóa admin này")
-        return
-    }
-    if (confirm(`Bạn có thật sự muốn xóa tài khoản ${dataUser[indexDelete].name} không?`)) {
-        dataUser.splice(indexDelete, 1)
-        drawTable(dataUser)
-        localStorage.setItem("dataUser", JSON.stringify(dataUser))
+    const indexDelete = category.findIndex(e => e.id == id)
+    if (confirm(`Bạn có thật sự muốn xóa danh mục ${category[indexDelete].name} không?`)) {
+        category.splice(indexDelete, 1)
+        localStorage.setItem("category", JSON.stringify(category))
+        drawTable(category)
     }
 }
 
@@ -123,19 +92,17 @@ function search() {
     // lấy chữ từ ô tìm kiếm
     const textSearch = document.getElementById("search_product").value
     // dùng filter lọc ra những đứa có tên mà trong tên có chữ giống với chữ cần tìm bằng includes
-    const userSearch = dataUser.filter(user => user.name.toLowerCase().includes(textSearch.trim().toLowerCase()))
+    const categorySearch = category.filter(cate => cate.name.toLowerCase().includes(textSearch.trim().toLowerCase()))
     // vẽ lại mảng
-    drawTable(userSearch)
+    drawTable(categorySearch)
 }
 
 function arrange() {
-    dataUser.sort((a, b) => a.name.localeCompare(b.name))
-    drawTable(dataUser)
+    category.sort((a, b) => a.name.localeCompare(b.name))
+    drawTable(category)
 }
 
-
-
-let totalProduct = dataUser.length;
+let totalProduct = category.length;
 let count = 5;
 let pageCurrent = 0;
 let totalPage = Math.ceil(totalProduct / count);
@@ -154,8 +121,8 @@ const showPagination = () => {
 // phần trang  : số trang hiện tại / số phần tử trên 1 trang
 const handlePagination = (page = 0) => {
     pageCurrent = page
-    dataUser.sort((a, b) => b.order_id - a.order_id);
-    let productPaginate = dataUser.filter((p, index) => (index >= (pageCurrent * count) && index < (pageCurrent + 1) * count))
+    category.sort((a, b) => b.order_id - a.order_id);
+    let productPaginate = category.filter((p, index) => (index >= (pageCurrent * count) && index < (pageCurrent + 1) * count))
     drawTable(productPaginate)
     showPagination()
 }

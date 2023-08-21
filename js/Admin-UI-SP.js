@@ -1,6 +1,6 @@
 let product = JSON.parse(localStorage.getItem("listproducts")) || []
-let idUser = JSON.parse(localStorage.getItem("idUses"))
-let dataUser = JSON.parse(localStorage.getItem("dataUser"))
+let idUser = JSON.parse(localStorage.getItem("idUses")) || []
+let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
 let indexUpdateGlobal = null
 
 const inputName = document.getElementById("name")
@@ -21,7 +21,14 @@ let checkAdmin = dataUser.find(e => e.id == idUser)
 if (checkAdmin.Permission == "User") {
     window.location.href = "home_page.html"
 }
-
+function drawPL() {
+    let category = JSON.parse(localStorage.getItem("category")) || []
+    let str = ""
+    category.forEach(e => str += `<option value="${e.name}">${e.name}</option>`
+    )
+    document.getElementById("category").innerHTML = str
+}
+drawPL()
 
 function drawTable(arr) {
     let stringHTML = ""
@@ -30,12 +37,13 @@ function drawTable(arr) {
         <td>${e.id}</td>
         <td>${e.name}</td>
         <td>${e.description}</td>
-        <td>${e.price}<b>VNĐ</b></td>
+        <td>${(e.price * 1).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</td>
         <td>${e.quantity}</td>
         <td>
             <img src="image/Product_img/${e.image}" alt="img">
         </td>
         <td>${e.status}</td>
+        <td>${e.category}</td>
         <td>
             <div class="action_col">
                 <button class="btn btn_sua" onclick="toggleForm(${e.id})">Edit</button>
@@ -73,6 +81,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
         }
     }
     if (indexUpdateGlobal != null) {
+        let categoryList = document.getElementById("category")
         let img = inputImg.value
         img = img.split("\\")
         img = img[img.length - 1]
@@ -82,6 +91,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
         product[indexUpdateGlobal].quantity = inputCount.value
         product[indexUpdateGlobal].description = description.value
         product[indexUpdateGlobal].status = selectStatus
+        product[indexUpdateGlobal].category = categoryList.value
         localStorage.setItem("listproducts", JSON.stringify(product))
         indexUpdateGlobal = null
         this.reset()
@@ -89,7 +99,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
         drawTable(product)
         return
     }
-
+    let categoryList = document.getElementById("category")
     let idGlobal = 1 + Math.round(Math.random() * 1000000)
     let img = inputImg.value
     img = img.split("\\")
@@ -101,7 +111,8 @@ document.getElementById("form").addEventListener("submit", function (e) {
         quantity: inputCount.value,
         image: img,
         description: description.value,
-        status: selectStatus
+        status: selectStatus,
+        category: categoryList.value
     }
     product.push(newProduct)
     localStorage.setItem("listproducts", JSON.stringify(product))
@@ -138,3 +149,29 @@ function arrange() {
     product.sort((a, b) => a.name.localeCompare(b.name))
     drawTable(product)
 }
+
+let totalProduct = product.length;
+let count = 4;
+let pageCurrent = 0;
+let totalPage = Math.ceil(totalProduct / count);
+// console.log(totalPage);
+
+// đổ ra giao diện
+const showPagination = () => {
+    let links = "";
+    for (let i = 0; i < totalPage; i++) {
+        links += `<li class="page-item ${i == pageCurrent ? 'active' : ''}" onclick="handlePagination(${i})"><a class="page-link" href="#">${i + 1}</a></li>`
+    }
+
+    document.querySelector(".pagination").innerHTML = `${links}`
+}
+
+// phần trang  : số trang hiện tại / số phần tử trên 1 trang
+const handlePagination = (page = 0) => {
+    pageCurrent = page
+    product.sort((a, b) => b.order_id - a.order_id);
+    let productPaginate = product.filter((p, index) => (index >= (pageCurrent * count) && index < (pageCurrent + 1) * count))
+    drawTable(productPaginate)
+    showPagination()
+}
+handlePagination();

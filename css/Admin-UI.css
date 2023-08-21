@@ -210,3 +210,52 @@ strong {
 th {
     background-color: aliceblue;
 }
+
+.pagination {
+    margin: 20px 0;
+}
+
+.page-item {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 8px 12px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #ddd;
+}
+
+.page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.page-item.disabled .page-link {
+    pointer-events: none;
+}
+
+.float-end {
+    float: right;
+}
+
+.mx-4 {
+    margin: 0rem 1rem 0rem;
+}
+
+.pagination {
+    position: fixed;
+    right: 30rem;
+    top: 9rem;
+}

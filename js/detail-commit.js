@@ -1,6 +1,6 @@
-let order = JSON.parse(localStorage.getItem("order"))
-let idUser = JSON.parse(localStorage.getItem("idUses"))
-let dataUser = JSON.parse(localStorage.getItem("dataUser"))
+let order = JSON.parse(localStorage.getItem("order")) || []
+let idUser = JSON.parse(localStorage.getItem("idUses")) || []
+let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
 let products = JSON.parse(localStorage.getItem("listproducts")) || []
 function checkSign() {
     if (+idUser > 0) {
@@ -39,8 +39,8 @@ function paint() {
             stri += `<li>Mã sản phẩm: <b>${value.id}</b>,
              Tên sản phẩm: <b>${value.name}</b>, 
              số lượng mua: <b>${value.quantity}</b>, 
-             giá 1 sản phẩm: <b>${value.price}đ</b>, 
-             tổng giá: <b>${+value.quantity * value.price}đ</b>,`
+             giá 1 sản phẩm: <b>${(value.price * 1).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</b>, 
+             tổng giá: <b>${(+value.quantity * value.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</b>,`
         }
         let status = ""
         if (element.acceptance == "a") {
@@ -49,6 +49,19 @@ function paint() {
             status = "Đã xác thực"
         } else {
             status = "Đã bị hủy"
+        }
+        if (element.acceptance != "a") {
+            return str += `<tr>
+                    <td>#${element.idoder}</td>
+                    <td colspan="2">
+                        <ul>
+                            ${stri}
+                        </ul>
+                    </td>
+                    <td><b style="color: brown">${status}</b></td>
+                    <td>
+                    </td>
+                </tr>`
         }
         return str += `<tr>
                     <td>#${element.idoder}</td>
@@ -59,7 +72,7 @@ function paint() {
                     </td>
                     <td><b style="color: brown">${status}</b></td>
                     <td>
-                        <button class="btn" onclick="deleteOder(${element.idoder})">Xóa</button>
+                        <button class="btn" onclick="deleteOder(${element.idoder})">Hủy</button>
                     </td>
                 </tr>`
     })
@@ -82,7 +95,7 @@ function deleteOder(id) {
         }
         localStorage.setItem("listproducts", JSON.stringify(products))
         order.splice(oderIndex, 1)
-        dataUser[locationUser].checkComfirm.splice(index, 1)
+        // dataUser[locationUser].checkComfirm.splice(index, 1)
         localStorage.setItem("dataUser", JSON.stringify(dataUser))
         localStorage.setItem("order", JSON.stringify(order))
         paint()

@@ -1,7 +1,7 @@
-let idUser = JSON.parse(localStorage.getItem("idUses"))
-let dataUser = JSON.parse(localStorage.getItem("dataUser"))
+let idUser = JSON.parse(localStorage.getItem("idUses")) || []
+let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
 localStorage.setItem("cartItem", JSON.stringify([]))
-let productDetails = JSON.parse(localStorage.getItem("productDetails"))
+let productDetails = JSON.parse(localStorage.getItem("productDetails")) || []
 localStorage.setItem("cartItem", JSON.stringify([]))
 function checkSign() {
     if (+idUser > 0) {
@@ -36,7 +36,7 @@ function paint() {
                     <h2>${product[index].name}</h2>
                     <h3>Trạng thái: ${product[index].status}</h3>
                 </div>
-                <p>Giá: ${product[index].price}<b>VND</b></p>
+                <p>Giá: <b>${(product[index].price * 1).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</b></p>
                 <p>Trong kho còn: ${product[index].quantity} Sản phẩm</p>
                 <div>
                     <button onclick="addToCart(${product[index].id})">Thêm vào giỏ hàng</button>

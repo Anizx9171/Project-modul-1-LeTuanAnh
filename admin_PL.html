@@ -16,7 +16,7 @@
     <header>
         <nav class="navbar">
             <div class="container-fluid">
-                <a class="navbar-brand fs-1 text-danger" href="#">Quản lí khách hàng</a>
+                <a class="navbar-brand fs-1 text-danger" href="#">Phân loại</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                     aria-label="Toggle navigation">
@@ -34,13 +34,13 @@
                                 <a class="nav-link" href="admin_SP.html">Quản lí sản phẩm</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-danger" href="admin_KH.html">Quản lý Khách hàng</a>
+                                <a class="nav-link " href="admin_KH.html">Quản lý Khách hàng</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="admin_DH.html">Quản lý đơn hàng</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="admin_PL.html">Phân loại</a>
+                                <a class="nav-link text-danger" href="admin_PL.html">Phân loại</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-success fs-4" href="Sign_in.html">Đăng xuất</a>
@@ -58,10 +58,10 @@
         <hr>
         <div class="search_add_scope">
             <div>
-                <button class="btn btn_them" onclick="toggleForm()">Thêm người dùng</button>
+                <button class="btn btn_them" onclick="toggleForm()">Thêm Danh mục</button>
             </div>
             <div>
-                <button class="btn btn_them" onclick="arrange()">Sắp xếp theo alpha b</button>
+                <button class="btn btn_them" onclick="arrange()">Sắp xếp</button>
             </div>
             <div>
                 <input type="search" id="search_product">
@@ -72,10 +72,8 @@
         <table>
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Họ và Tên</th>
-                    <th>email</th>
-                    <th>Quyền hạn</th>
+                    <th>Danh mục</th>
+                    <th colspan="2">Mô tả</th>
                     <th></th>
                 </tr>
             </thead>
@@ -83,27 +81,16 @@
             <tbody id="table_body">
             </tbody>
         </table>
+
         <div id="form_scope" class="hide">
             <form action="" id="form">
-                <h3>Thêm tài khoản</h3>
+                <h3>Thêm phân loại</h3>
                 <div>
-                    <label for="name">Tên đăng nhập: </label> <input id="name" type="text"
-                        pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                    <label for="name">Tên danh mục: </label> <input id="name" type="text" required>
                 </div>
                 <div>
-                    <label for="price">email: </label> <input id="price" type="email" placeholder=" @gmail.com"
+                    <label for="price">Mô tả: </label> <input id="price" type="text" placeholder="Mô tả danh mục"
                         required>
-                </div>
-                <div>
-                    <label for="pass">Mật khẩu: </label> <input id="pass" type="password"
-                        placeholder="Chữ thường, hoa và số" pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
-                </div>
-                <div id="selection">
-                    <label>Quyền hạn: </label>
-                    <input id="RUser" type="radio" name="Permission" checked value="User">
-                    <label for="RUser">User</label>
-                    <input id="RAdmin" type="radio" name="Permission" value="Admin">
-                    <label for="RAdmin">Admin</label>
                 </div>
                 <div class="btn_them_scope">
                     <button class="btn btn_xoa" type="button" onclick="toggleForm()">Hủy</button>
@@ -146,7 +133,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
-    <script src="js/Admin-UI-KH.js"></script>
+    <script src="js/Admin-UI-PL.js"></script>
 </body>
 
 </html>

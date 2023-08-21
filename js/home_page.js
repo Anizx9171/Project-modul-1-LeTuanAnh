@@ -1,5 +1,5 @@
-let idUser = JSON.parse(localStorage.getItem("idUses"))
-let dataUser = JSON.parse(localStorage.getItem("dataUser"))
+let idUser = JSON.parse(localStorage.getItem("idUses")) || []
+let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
 localStorage.setItem("cartItem", JSON.stringify([]))
 localStorage.setItem("productDetails", JSON.stringify([]))
 
@@ -47,7 +47,7 @@ function print(arr) {
                 <div class="Products_label">
                     <h2>${value.name}</h2>
                     <span>${value.description}</span>
-                    <p>${value.price} vnđ</p>
+                    <p>${(value.price * 1).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
                 </div>
             </div>`
     })
@@ -146,4 +146,19 @@ function productDetails(id) {
     let detalItem = JSON.parse(localStorage.getItem("productDetails"))
     detalItem.push(id)
     localStorage.setItem("productDetails", JSON.stringify(detalItem))
+}
+
+function categoryPaintBTN() {
+    let category = JSON.parse(localStorage.getItem("category")) || []
+    let str = `<button onclick="print(product)">All</button>`
+    category.forEach(e => str += `<button onclick="categoryPaint(${e.id})">${e.name}</button>`)
+    document.getElementById("category_button").innerHTML = str
+}
+categoryPaintBTN()
+
+function categoryPaint(id) {
+    let category = JSON.parse(localStorage.getItem("category")) || []
+    let categoryE = category.find(e => e.id == id)
+    let productCategory = product.filter(e => e.category.toLowerCase() == categoryE.name.toLowerCase())
+    print(productCategory)
 }

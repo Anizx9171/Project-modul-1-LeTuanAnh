@@ -13,7 +13,7 @@ document.getElementById("registrationForm").addEventListener("submit", function 
     let emailUser = document.getElementById("email").value;
     let passwordUser = document.getElementById("password").value;
 
-    const data = JSON.parse(localStorage.getItem("dataUser")) // keo data ve
+    const data = JSON.parse(localStorage.getItem("dataUser")) || [] // keo data ve
 
     // kiem tra xem trong cac user co ai trung email voi ng dang dang ky hay ko
     const emailCheck = data.findIndex(user => user.email == emailUser)

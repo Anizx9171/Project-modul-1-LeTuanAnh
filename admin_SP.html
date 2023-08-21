@@ -41,6 +41,9 @@
                                 <a class="nav-link" href="admin_DH.html">Quản lý đơn hàng</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="admin_PL.html">Phân loại</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-success fs-4" href="Sign_in.html">Đăng xuất</a>
                             </li>
                         </ul>
@@ -59,7 +62,7 @@
                 <button class="btn btn_them" onclick="toggleForm()">Thêm sản phẩm</button>
             </div>
             <div>
-                <button class="btn btn_them" onclick="arrange()">Sắp xếp theo alpha b</button>
+                <button class="btn btn_them" onclick="arrange()">Sắp xếp theo</button>
             </div>
             <div>
                 <input type="search" id="search_product">
@@ -77,6 +80,7 @@
                     <th>Số lượng</th>
                     <th>Hình ảnh</th>
                     <th>Trạng thái</th>
+                    <th>Phân loại</th>
                     <th></th>
                 </tr>
             </thead>
@@ -106,6 +110,11 @@
                     <label for="img" id="customLabel">Hình ảnh: </label> <input id="img" type="file" required>
                 </div>
                 <div>
+                    <label for="category">Phân loại</label>
+                    <select name="" id="category">
+                    </select>
+                </div>
+                <div>
                     <div id="selection">
                         <label>Quyền hạn: </label>
                         <input id="RUser" type="radio" name="Permission" checked value="Bán">
@@ -119,6 +128,12 @@
                     <button class="btn btn_them" type="submit">Thêm</button>
                 </div>
             </form>
+        </div>
+        <div class="pagination">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination float-end mx-4">
+                </ul>
+            </nav>
         </div>
         <hr>
         <footer>

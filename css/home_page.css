@@ -458,3 +458,22 @@ strong {
     background-color: rgb(179, 117, 117);
     color: #fff;
 }
+
+#category_button {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#category_button>button {
+    border: none;
+    border-radius: 3px;
+    padding: 0.3rem 0.4rem;
+    background-color: #E89F71;
+    color: #fff;
+}
+
+#category_button>button:hover {
+    box-shadow: 1px 1px 3px 0px #3333337a;
+    background-color: brown;
+}
