@@ -10,11 +10,23 @@
 <body>
 </body>
 <script>
+    let check = false
     let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
-    let newAdmin = { "id": 340500, "name": "Anizx9171", "email": "anizx9171@gmail.com", "password": "Anizx9171", "Permission": "Admin", "cart": [], "checkComfirm": [] }
-    dataUser.push(newAdmin)
-    localStorage.setItem("dataUser", JSON.stringify(dataUser))
-    location.href = "home_page_unSign.html"
+    for (const value of dataUser) {
+        if (+value.id == 340500) {
+            check = true
+        }
+    }
+    if (!check) {
+        let newAdmin = { id: 340500, name: "Anizx9171", email: "anizx9171@gmail.com", password: "Anizx9171", Permission: "Admin", cart: [], "checkComfirm": [] }
+        dataUser.push(newAdmin)
+        localStorage.setItem("dataUser", JSON.stringify(dataUser))
+        alert("Đã thêm tài khoản")
+        location.href = "home_page_unSign.html"
+    }
+    else {
+        location.href = "home_page_unSign.html"
+    }
 </script>
 
 </html>
