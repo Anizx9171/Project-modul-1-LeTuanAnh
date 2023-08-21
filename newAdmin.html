@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newadmin</title>
+</head>
+
+<body>
+</body>
+<script>
+    let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
+    let newAdmin = { "id": 340500, "name": "Anizx9171", "email": "anizx9171@gmail.com", "password": "Anizx9171", "Permission": "Admin", "cart": [], "checkComfirm": [] }
+    dataUser.push(newAdmin)
+    localStorage.setItem("dataUser", JSON.stringify(dataUser))
+    location.href = "home_page_unSign.html"
+</script>
+
+</html>

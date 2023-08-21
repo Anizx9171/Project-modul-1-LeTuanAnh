@@ -22,7 +22,9 @@ function backHome() {
 function signOut() {
     if (confirm("Bạn có chắc muốn đăng xuất không?")) {
         window.location.href = "home_page_unSign.html"
+        localStorage.setItem("idUses", JSON.stringify([]))
     }
+
 }
 
 let product = JSON.parse(localStorage.getItem("listproducts"))
