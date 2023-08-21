@@ -474,6 +474,6 @@ strong {
 }
 
 #category_button>button:hover {
-    box-shadow: 1px 1px 3px 0px #3333337a;
+    box-shadow: 1px 1px 3px 0px #333333ab;
     background-color: brown;
 }

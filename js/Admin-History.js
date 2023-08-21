@@ -2,6 +2,7 @@ let order = JSON.parse(localStorage.getItem("order")) || []
 let idUser = JSON.parse(localStorage.getItem("idUses")) || []
 let dataUser = JSON.parse(localStorage.getItem("dataUser")) || []
 let products = JSON.parse(localStorage.getItem("listproducts")) || []
+let history = JSON.parse(localStorage.getItem("history")) || []
 function checkSign() {
     if (+idUser > 0) {
         return
@@ -26,13 +27,10 @@ function detailCommit() {
     window.location.href = "detail_commit.html"
 }
 
-let locationUser = dataUser.findIndex((element) => element.id == idUser)
-document.getElementById("userName").innerHTML = dataUser[locationUser].name
-
-function paint() {
+function paint(arr = history) {
     let str = ""
     let stri = ""
-    dataUser[locationUser].checkComfirm.forEach((element) => {
+    arr.forEach((element) => {
         stri = ""
         for (const value of element.oder) {
 
@@ -50,20 +48,8 @@ function paint() {
         } else {
             status = "Đã bị hủy"
         }
-        if (element.acceptance != "a") {
-            return str += `<tr>
-                    <td>#${element.idoder}</td>
-                    <td colspan="2">
-                        <ul>
-                            ${stri}
-                        </ul>
-                    </td>
-                    <td><b style="color: brown">${status}</b></td>
-                    <td>
-                    </td>
-                </tr>`
-        }
         return str += `<tr>
+        <td>#${element.iduser}</td>
                     <td>#${element.idoder}</td>
                     <td colspan="2">
                         <ul>
@@ -71,9 +57,6 @@ function paint() {
                         </ul>
                     </td>
                     <td><b style="color: brown">${status}</b></td>
-                    <td>
-                        <button class="btn" onclick="deleteOder(${element.idoder})">Hủy</button>
-                    </td>
                 </tr>`
     })
     document.getElementById("table_body").innerHTML = ""
@@ -81,22 +64,27 @@ function paint() {
 }
 paint()
 
-function deleteOder(id) {
-    let check = confirm("Bạn muốn hủy đơn hàng này?")
-    if (check) {
-        let index = dataUser[locationUser].checkComfirm.findIndex(e => e.idoder == id)
-        let oderIndex = order.findIndex(e => e.idoder == id)
-        for (const ele of dataUser[locationUser].checkComfirm[index].oder) {
-            for (const val of products) {
-                if (ele.id == val.id) {
-                    val.quantity += ele.quantity
-                }
-            }
-        }
-        localStorage.setItem("listproducts", JSON.stringify(products))
-        order.splice(oderIndex, 1)
-        localStorage.setItem("dataUser", JSON.stringify(dataUser))
-        localStorage.setItem("order", JSON.stringify(order))
-        paint()
+let totalProduct = history.length;
+let count = 5;
+let pageCurrent = 0;
+let totalPage = Math.ceil(totalProduct / count);
+
+
+const showPagination = () => {
+    let links = "";
+    for (let i = 0; i < totalPage; i++) {
+        links += `<li class="page-item ${i == pageCurrent ? 'active' : ''}" onclick="handlePagination(${i})"><a class="page-link" href="#">${i + 1}</a></li>`
     }
+
+    document.querySelector(".pagination").innerHTML = `${links}`
 }
+
+
+const handlePagination = (page = 0) => {
+    pageCurrent = page
+    history.sort((a, b) => b.order_id - a.order_id);
+    let productPaginate = history.filter((p, index) => (index >= (pageCurrent * count) && index < (pageCurrent + 1) * count))
+    paint(productPaginate)
+    showPagination()
+}
+handlePagination();

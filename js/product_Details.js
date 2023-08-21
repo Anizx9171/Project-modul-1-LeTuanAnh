@@ -44,7 +44,7 @@ function paint() {
             </div>
             <div>
                 <h2>Mô tả:</h2>
-                <p>${product[index].description}</p>
+                <p>${product[index].description}<br><br>Sản phẩm thuộc nhóm: <strong>${product[index].category}</strong></p>
             </div>`
 }
 paint()

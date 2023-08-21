@@ -56,7 +56,9 @@ function accept(id, idU) {
     let indexU = dataUser.findIndex(e => e.id == idU)
     let indexComfirm = dataUser[indexU].checkComfirm.findIndex(e => e.idoder == id)
     dataUser[indexU].checkComfirm[indexComfirm].acceptance = "b"
-
+    let history = JSON.parse(localStorage.getItem("history"))
+    history.push(dataUser[indexU].checkComfirm[indexComfirm])
+    localStorage.setItem("history", JSON.stringify(history))
     oder.splice(index, 1)
     localStorage.setItem("order", JSON.stringify(oder))
     localStorage.setItem("dataUser", JSON.stringify(dataUser))
@@ -69,7 +71,9 @@ function deny(id, idU) {
         let indexU = dataUser.findIndex(e => e.id == idU)
         let indexComfirm = dataUser[indexU].checkComfirm.findIndex(e => e.idoder == id)
         dataUser[indexU].checkComfirm[indexComfirm].acceptance = "c"
-
+        let history = JSON.parse(localStorage.getItem("history"))
+        history.push(dataUser[indexU].checkComfirm[indexComfirm])
+        localStorage.setItem("history", JSON.stringify(history))
         oder.splice(index, 1)
         localStorage.setItem("order", JSON.stringify(oder))
         localStorage.setItem("dataUser", JSON.stringify(dataUser))
