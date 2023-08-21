@@ -1,3 +1,7 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #showDetails {
     margin-top: 20px;
     display: flex;
