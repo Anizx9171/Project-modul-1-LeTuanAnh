@@ -1,6 +1,15 @@
-productDetails	[]
-listproducts	[{"id":1,"name":"Lolito","quantity":"10","description":"Sofa lớn sang trọng","price":"7000000","status":"Bán","image":"Images-1.png"},{"id":2,"name":"Respira","quantity":"10","description":"quạt tối giản","price":"750000","status":"Bán","image":"Images-2.png"},{"id":3,"name":"Grifo","quantity":7,"description":"Đèn ngủ tối giản","price":160000,"status":"Bán","image":"Images-3.png"},{"id":4,"name":"Pingky","quantity":9,"description":"Bộ ga giường dễ thương","price":730000,"status":"Bán","image":"Images-4.png"},{"id":5,"name":"Potty","quantity":3,"description":"chậu hoa tối giản","price":"120000","status":"Bán","image":"Images-5.png"},{"id":6,"name":"Syltherine","quantity":9,"description":"Bàn cafe phong cách","price":900000,"status":"Bán","image":"images.png"},{"id":7,"name":"Leviosa","quantity":12,"description":"Ghế cafe phong cách","price":"300000","status":"Bán","image":"image 2.png"},{"id":8,"name":"Muggo","quantity":8,"description":"Cốc nhỏ sang trọng","price":40000,"status":"Bán","image":"image 6.png"}]
-order	[]
-cartItem	[]
-idUses	[]
-dataUser	[]
+{"productDetails":	[],
+"listproducts":[
+    {"id":1,"name":"Lolito","quantity":"10","description":"Sofa lớn sang trọng","price":"7000000","status":"Bán","image":"Images-1.png"},
+    {"id":2,"name":"Respira","quantity":"10","description":"quạt tối giản","price":"750000","status":"Bán","image":"Images-2.png"},
+    {"id":3,"name":"Grifo","quantity":7,"description":"Đèn ngủ tối giản","price":160000,"status":"Bán","image":"Images-3.png"},
+    {"id":4,"name":"Pingky","quantity":9,"description":"Bộ ga giường dễ thương","price":730000,"status":"Bán","image":"Images-4.png"},
+    {"id":5,"name":"Potty","quantity":3,"description":"chậu hoa tối giản","price":"120000","status":"Bán","image":"Images-5.png"},
+    {"id":6,"name":"Syltherine","quantity":9,"description":"Bàn cafe phong cách","price":900000,"status":"Bán","image":"images.png"},
+    {"id":7,"name":"Leviosa","quantity":12,"description":"Ghế cafe phong cách","price":"300000","status":"Bán","image":"image 2.png"},
+    {"id":8,"name":"Muggo","quantity":8,"description":"Cốc nhỏ sang trọng","price":40000,"status":"Bán","image":"image 6.png"}
+],
+"order":[],
+"cartItem":[],
+"idUses":[],
+"dataUser":[]}
