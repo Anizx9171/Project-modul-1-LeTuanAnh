@@ -71,11 +71,23 @@ function deny(id, idU) {
         let indexU = dataUser.findIndex(e => e.id == idU)
         let indexComfirm = dataUser[indexU].checkComfirm.findIndex(e => e.idoder == id)
         dataUser[indexU].checkComfirm[indexComfirm].acceptance = "c"
+        let products = JSON.parse(localStorage.getItem("listproducts")) || []
+        dataUser[indexU].checkComfirm[indexComfirm].oder.forEach(e =>
+            products.forEach(va => {
+                if (e.id == va.id) {
+                    va.quantity += e.quantity
+                }
+                if (va.quantity > 0) {
+                    va.status = "Bán"
+                }
+            })
+        )
         let history = JSON.parse(localStorage.getItem("history"))
         history.push(dataUser[indexU].checkComfirm[indexComfirm])
         localStorage.setItem("history", JSON.stringify(history))
         oder.splice(index, 1)
         localStorage.setItem("order", JSON.stringify(oder))
+        localStorage.setItem("listproducts", JSON.stringify(products))
         localStorage.setItem("dataUser", JSON.stringify(dataUser))
         paint()
     }

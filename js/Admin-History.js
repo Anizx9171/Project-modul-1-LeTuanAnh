@@ -41,12 +41,10 @@ function paint(arr = history) {
              tổng giá: <b>${(+value.quantity * value.price).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</b>,`
         }
         let status = ""
-        if (element.acceptance == "a") {
-            status = "Chưa xác thực"
-        } else if (element.acceptance == "b") {
-            status = "Đã xác thực"
+        if (element.acceptance == "b") {
+            status = "Đã chấp nhận"
         } else {
-            status = "Đã bị hủy"
+            status = "Bị từ chối"
         }
         return str += `<tr>
         <td>#${element.iduser}</td>

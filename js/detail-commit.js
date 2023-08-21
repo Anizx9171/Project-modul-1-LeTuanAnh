@@ -46,9 +46,9 @@ function paint() {
         if (element.acceptance == "a") {
             status = "Chưa xác thực"
         } else if (element.acceptance == "b") {
-            status = "Đã xác thực"
+            status = "Đã chấp nhận"
         } else {
-            status = "Đã bị hủy"
+            status = "Bị từ chối"
         }
         if (element.acceptance != "a") {
             return str += `<tr>
@@ -91,9 +91,13 @@ function deleteOder(id) {
                 if (ele.id == val.id) {
                     val.quantity += ele.quantity
                 }
+                if (val.quantity > 0) {
+                    val.status = "Bán"
+                }
             }
         }
         localStorage.setItem("listproducts", JSON.stringify(products))
+        dataUser[locationUser].checkComfirm.splice(index, 1)
         order.splice(oderIndex, 1)
         localStorage.setItem("dataUser", JSON.stringify(dataUser))
         localStorage.setItem("order", JSON.stringify(order))
