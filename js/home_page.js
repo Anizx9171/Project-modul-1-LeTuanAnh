@@ -20,8 +20,7 @@ function backHome() {
 }
 
 function signOut() {
-    let logOut = confirm("Bạn có chắc muốn đăng xuất không?")
-    if (logOut === true) {
+    if (confirm("Bạn có chắc muốn đăng xuất không?")) {
         window.location.href = "home_page_unSign.html"
     }
 }

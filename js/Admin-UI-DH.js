@@ -64,8 +64,7 @@ function accept(id, idU) {
 }
 
 function deny(id, idU) {
-    let check = confirm("Bạn muốn xóa yêu cầu mua hàng này?")
-    if (check) {
+    if (confirm("Bạn muốn xóa yêu cầu mua hàng này?")) {
         let index = oder.findIndex(e => e.idoder == id)
         let indexU = dataUser.findIndex(e => e.id == idU)
         let indexComfirm = dataUser[indexU].checkComfirm.findIndex(e => e.idoder == id)

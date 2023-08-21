@@ -112,8 +112,7 @@ function deleteProduct(id) {
         alert("Không được phép xóa admin này")
         return
     }
-    const result = confirm(`Bạn có thật sự muốn xóa tài khoản ${dataUser[indexDelete].name} không?`)
-    if (result) {
+    if (confirm(`Bạn có thật sự muốn xóa tài khoản ${dataUser[indexDelete].name} không?`)) {
         dataUser.splice(indexDelete, 1)
         drawTable(dataUser)
         localStorage.setItem("dataUser", JSON.stringify(dataUser))

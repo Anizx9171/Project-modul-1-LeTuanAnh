@@ -108,6 +108,9 @@ function buyItem() {
             if (ele.id == val.id) {
                 val.quantity -= ele.quantity
             }
+            if (val.quantity == 0) {
+                val.status = "Không bán"
+            }
         }
     }
     localStorage.setItem("listproducts", JSON.stringify(products))

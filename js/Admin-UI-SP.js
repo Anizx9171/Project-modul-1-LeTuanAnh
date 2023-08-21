@@ -112,8 +112,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
 function deleteProduct(id) {
     const indexDelete = product.findIndex(e => e.id == id)
-    const result = confirm(`Bạn thật sự muốn xóa sản phẩm ${product[indexDelete].name} ?`)
-    if (result) {
+    if (confirm(`Bạn thật sự muốn xóa sản phẩm ${product[indexDelete].name} ?`)) {
         product.splice(indexDelete, 1)
         localStorage.setItem("listproducts", JSON.stringify(product))
         drawTable(product)
